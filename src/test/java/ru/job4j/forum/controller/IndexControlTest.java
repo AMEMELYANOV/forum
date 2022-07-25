@@ -1,4 +1,4 @@
-package ru.job4j.forum.control;
+package ru.job4j.forum.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -23,7 +23,7 @@ public class IndexControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/index"))
                 .andDo(print())
                 .andExpect(status().isOk())

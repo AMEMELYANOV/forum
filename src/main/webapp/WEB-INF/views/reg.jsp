@@ -42,7 +42,7 @@
                             <td><input type='password' name='password'/></td>
                         </tr>
                         <tr>
-                            <td colspan='2'><input name="submit" type="submit" value="submit"/></td>
+                            <td colspan='2'><input name="submit" type="submit" value="Подтвердить"/></td>
                         </tr>
                     </table>
                 </div>

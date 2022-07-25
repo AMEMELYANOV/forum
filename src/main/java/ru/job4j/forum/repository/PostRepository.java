@@ -1,4 +1,4 @@
-package ru.job4j.forum.store;
+package ru.job4j.forum.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

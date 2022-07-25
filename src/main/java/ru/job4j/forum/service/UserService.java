@@ -3,8 +3,8 @@ package ru.job4j.forum.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.store.AuthorityRepository;
-import ru.job4j.forum.store.UserRepository;
+import ru.job4j.forum.repository.AuthorityRepository;
+import ru.job4j.forum.repository.UserRepository;
 
 @Service
 public class UserService {

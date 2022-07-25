@@ -1,4 +1,4 @@
-package ru.job4j.forum.control;
+package ru.job4j.forum.controller;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class PostControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnEditPost() throws Exception {
+    public void shouldReturnEditPost() throws Exception {
         this.mockMvc.perform(get("/edit").param("id", "1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("edit"));
@@ -44,7 +44,7 @@ public class PostControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnAddPost() throws Exception {
+    public void shouldReturnAddPost() throws Exception {
         this.mockMvc.perform(get("/addPost"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -53,7 +53,7 @@ public class PostControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnPost() throws Exception {
+    public void shouldReturnPost() throws Exception {
         this.mockMvc.perform(get("/post").param("id", "1"))
                 .andDo(print())
                 .andExpect(status().isOk())

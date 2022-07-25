@@ -1,4 +1,4 @@
-package ru.job4j.forum.control;
+package ru.job4j.forum.controller;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -33,7 +33,7 @@ public class RegControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/reg"))
                 .andDo(print())
                 .andExpect(status().isOk())

@@ -1,4 +1,4 @@
-package ru.job4j.forum.configuration;
+package ru.job4j.forum.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

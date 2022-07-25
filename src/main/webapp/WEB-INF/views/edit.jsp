@@ -42,7 +42,7 @@
                 <td><input type='text' name='description' value="${post.description}"/></td>
             </tr>
             <tr>
-                <td colspan='2'><input name="submit" type="submit" value="Submit" /></td>
+                <td colspan='2'><input name="submit" type="submit" value="Выполнить" /></td>
             </tr>
         </table>
     </form>

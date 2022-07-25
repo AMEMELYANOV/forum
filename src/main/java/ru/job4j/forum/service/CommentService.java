@@ -4,9 +4,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.store.CommentRepository;
-import ru.job4j.forum.store.PostRepository;
-import ru.job4j.forum.store.UserRepository;
+import ru.job4j.forum.repository.CommentRepository;
+import ru.job4j.forum.repository.PostRepository;
+import ru.job4j.forum.repository.UserRepository;
 
 import java.util.List;
 

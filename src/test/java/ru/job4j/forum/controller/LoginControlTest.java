@@ -1,4 +1,4 @@
-package ru.job4j.forum.control;
+package ru.job4j.forum.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LoginControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/login"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -30,7 +30,7 @@ public class LoginControlTest {
 
     @Test
     @WithMockUser
-    public void ShouldRedirectWithLogoutTrue() throws Exception {
+    public void shouldRedirectWithLogoutTrue() throws Exception {
         this.mockMvc.perform(get("/logout"))
                 .andDo(print())
                 .andExpect(redirectedUrl("/login?logout=true"));
