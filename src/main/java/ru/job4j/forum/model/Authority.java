@@ -1,53 +1,35 @@
 package ru.job4j.forum.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Модель данных роль
+ *
+ * @author Alexander Emelyanov
+ * @version 1.0
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "authorities")
 public class Authority {
+
+    /**
+     * Идентификатор роли
+     */
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    /**
+     * Наименование роли
+     */
     private String authority;
-
-    public static Authority of(String authority) {
-        Authority auth = new Authority();
-        auth.authority = authority;
-        return auth;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Authority authority = (Authority) o;
-        return id == authority.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

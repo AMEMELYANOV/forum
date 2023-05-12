@@ -1,16 +1,27 @@
 package ru.job4j.forum.service;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.User;
 import ru.job4j.forum.repository.UserRepository;
 
+import javax.transaction.Transactional;
+
 /**
- * Сервис по работе с пользователями
+ * Реализация сервиса по работе с пользователями
  *
  * @author Alexander Emelyanov
  * @version 1.0
- * @see ru.job4j.forum.model.User
+ * @see ru.job4j.forum.service.UserService
  */
-public interface UserService {
+@AllArgsConstructor
+@Service
+public class ImplUserService implements UserService {
+
+    /**
+     * Объект для доступа к методам UserRepository
+     */
+    private final UserRepository userRepository;
 
     /**
      * Сохраняет пользователя в репозитории.
@@ -19,7 +30,11 @@ public interface UserService {
      *
      * @param user пользователь
      */
-    void save(User user);
+    @Transactional
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
 
     /**
      * Возвращает пользователя по имени пользователя.
@@ -29,5 +44,9 @@ public interface UserService {
      * @param username имя пользователя
      * @return пользователь
      */
-    User findUserByUsername(String username);
+    @Transactional
+    @Override
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
 }

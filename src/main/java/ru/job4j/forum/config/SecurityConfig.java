@@ -13,22 +13,47 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * Конфигурация системы безопасности
+ *
+ * @author Alexander Emelyanov
+ * @version 1.0
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * Шифратор паролей
+     */
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Источник данных
+     */
     @Qualifier("dataSource")
     @Autowired
     private DataSource ds;
 
+    /**
+     * Создание бина PasswordEncoder для
+     * шифрования паролей пользователей.
+     *
+     * @return объект BCryptPasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Организует взаимодействие между системой безопасности и хранилища
+     * пользователей для выполнения аутентификации.
+     * Реализация использует менеджер аутентификации через JDBC.
+     *
+     * @param auth объект для аутентификации пользователей
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(ds)
@@ -41,6 +66,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                 + "where u.username = ? and u.authority_id = a.id");
     }
 
+    /**
+     * Создает конфигурацию авторизации пользователей при работе с приложением.
+     *
+     * @param http объект HttpSecurity для которого выполняется настройка авторизации
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()

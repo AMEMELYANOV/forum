@@ -1,18 +1,24 @@
 package ru.job4j.forum.service;
 
-import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.repository.AuthorityRepository;
 
-@Service
-public class AuthorityService {
-    private AuthorityRepository authorityRepository;
+/**
+ * Сервис по работе с ролями
+ *
+ * @author Alexander Emelyanov
+ * @version 1.0
+ * @see ru.job4j.forum.model.Authority
+ */
+public interface AuthorityService {
 
-    public AuthorityService(AuthorityRepository authorityRepository) {
-        this.authorityRepository = authorityRepository;
-    }
-
-    public Authority findByAuthority(String role) {
-        return authorityRepository.findByAuthority(role);
-    }
+    /**
+     * Возвращает роль по наименованию.
+     * Для получения роли вызывается метод репозитория
+     * {@link AuthorityRepository#findByAuthority(String)}.
+     *
+     * @param role наименование роли
+     * @return роли
+     */
+    Authority findByAuthority(String role);
 }

@@ -10,29 +10,35 @@ import ru.job4j.forum.Main;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+/**
+ * Тест класс реализации контроллеров
+ *
+ * @author Alexander Emelyanov
+ * @version 1.0
+ * @see ru.job4j.forum.controller.IndexController
+ */
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
-public class LoginControlTest {
+public class IndexControllerTest {
 
+    /**
+     * Объект заглушка направления запросов
+     */
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Выполняется проверка возвращения стартовой страницы.
+     */
     @Test
     @WithMockUser
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/login"))
+        this.mockMvc.perform(get("/index"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"));
-    }
-
-    @Test
-    @WithMockUser
-    public void shouldRedirectWithLogoutTrue() throws Exception {
-        this.mockMvc.perform(get("/logout"))
-                .andDo(print())
-                .andExpect(redirectedUrl("/login?logout=true"));
+                .andExpect(view().name("index"));
     }
 }

@@ -1,18 +1,28 @@
 package ru.job4j.forum.service;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.repository.PostRepository;
 
-import java.util.List;
+import javax.transaction.Transactional;
+import java.util.*;
 
 /**
- * Сервис по работе с постами
+ * Реализация сервиса по работе с постами
  *
  * @author Alexander Emelyanov
  * @version 1.0
- * @see ru.job4j.forum.model.Post
+ * @see ru.job4j.forum.service.PostService
  */
-public interface PostService {
+@AllArgsConstructor
+@Service
+public class ImplPostService implements PostService {
+
+    /**
+     * Объект для доступа к методам PostRepository
+     */
+    private final PostRepository postRepository;
 
     /**
      * Возвращает список постов.
@@ -21,7 +31,11 @@ public interface PostService {
      *
      * @return список постов
      */
-    List<Post> findAll();
+    @Transactional
+    @Override
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
 
     /**
      * Сохраняет пост в репозитории.
@@ -31,7 +45,15 @@ public interface PostService {
      * @param post пост
      * @return сохраненный пост
      */
-    Post save(Post post);
+    @Transactional
+    @Override
+    public Post save(Post post) {
+        Post oldPost = findById(post.getId());
+        if (oldPost != null) {
+            post.setCreated(oldPost.getCreated());
+        }
+        return postRepository.save(post);
+    }
 
     /**
      * Возвращает пост по аргументу id.
@@ -41,5 +63,9 @@ public interface PostService {
      * @param id идентификатор поста
      * @return найденный пост
      */
-    Post findById(int id);
+    @Transactional
+    @Override
+    public Post findById(int id) {
+        return postRepository.findById(id).orElse(null);
+    }
 }

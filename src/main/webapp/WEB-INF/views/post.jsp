@@ -80,7 +80,7 @@
     <div class="row">
         <form name='comment' action="<c:url value='/addComm'/>" method='POST'>
             <table class="table">
-                <input type ='hidden' name = "id" value = "${post.id}"/>
+                <input type ='hidden' name = "postId" value = "${post.id}"/>
                 <tr>
                     <td>
                         <input type="submit" name="submit" value="Добавить комментарий">

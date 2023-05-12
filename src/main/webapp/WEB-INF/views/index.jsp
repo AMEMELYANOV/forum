@@ -43,10 +43,10 @@
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <c:url var="updateButton" value="/edit">
-                    <c:param name="id" value="${post.id}"/>
+                    <c:param name="postId" value="${post.id}"/>
                 </c:url>
                 <c:url var="viewPostButton" value="/post">
-                    <c:param name="id" value="${post.id}"/>
+                    <c:param name="postId" value="${post.id}"/>
                 </c:url>
                 <tr>
                     <td><c:out value="${post.name}"/></td>
