@@ -65,8 +65,8 @@ public class RegControllerTest {
     @WithMockUser
     public void shouldSaveUser() throws Exception {
         this.mockMvc.perform(post("/reg")
-                .param("username", "user")
-                .param("password", "password"))
+                        .param("username", "user")
+                        .param("password", "password"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/login"));

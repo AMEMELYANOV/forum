@@ -66,6 +66,6 @@ public class ImplPostService implements PostService {
     @Transactional
     @Override
     public Post findById(int id) {
-        return postRepository.findById(id).orElse(null);
+        return postRepository.findById(id);
     }
 }

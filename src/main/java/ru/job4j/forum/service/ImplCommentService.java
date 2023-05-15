@@ -55,7 +55,7 @@ public class ImplCommentService implements CommentService {
     }
 
     /**
-     * Сохраняет комментарий в репозитории.
+     * Сохраняет комментарий в репозитории и возвращает его.
      * Устанавливает в качестве полей комментария пользователя и пост.
      * Пользователь получается по имени пользователя контекста безопасности
      * из репозитория с помощью метода репозитория
@@ -68,13 +68,13 @@ public class ImplCommentService implements CommentService {
      */
     @Transactional
     @Override
-    public void addCommentToPost(int id, Comment comment) {
+    public Comment addCommentToPost(int id, Comment comment) {
         User user = userRepository.findUserByUsername(SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getName());
         comment.setUser(user);
-        comment.setPost(postRepository.findById(id).get());
-        commentRepository.save(comment);
+        comment.setPost(postRepository.findById(id));
+        return commentRepository.save(comment);
     }
 }

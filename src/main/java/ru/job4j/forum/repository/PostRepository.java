@@ -17,12 +17,12 @@ import java.util.Optional;
 public interface PostRepository extends CrudRepository<Post, Long> {
 
     /**
-     * Возвращает Optional поста по идентификатору.
+     * Возвращает пост по идентификатору.
      *
      * @param id идентификатор поста
-     * @return Optional поста
+     * @return  пост
      */
-    Optional<Post> findById(int id);
+    Post findById(int id);
 
     /**
      * Возвращает список всех постов.

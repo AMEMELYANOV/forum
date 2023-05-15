@@ -29,11 +29,12 @@ public class ImplUserService implements UserService {
      * {@link UserRepository#save(Object)}
      *
      * @param user пользователь
+     * @return пользователь
      */
     @Transactional
     @Override
-    public void save(User user) {
-        userRepository.save(user);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     /**

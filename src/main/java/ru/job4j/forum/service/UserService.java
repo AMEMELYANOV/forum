@@ -18,8 +18,9 @@ public interface UserService {
      * {@link UserRepository#save(Object)}
      *
      * @param user пользователь
+     * @return пользователь
      */
-    void save(User user);
+    User save(User user);
 
     /**
      * Возвращает пользователя по имени пользователя.

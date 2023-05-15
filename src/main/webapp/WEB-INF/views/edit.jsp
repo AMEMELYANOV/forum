@@ -31,7 +31,7 @@
     </div>
     <form name='post' action="<c:url value='/save'/>" method='POST'>
         <table>
-            <input type ='hidden' name = "postId" value = "${post.id}"/>
+            <input type ='hidden' name = "id" value = "${post.id}"/>
             <input type ='hidden' name = "userName" value = "${post.user.username}"/>
             <tr>
                 <td>Название темы:</td>

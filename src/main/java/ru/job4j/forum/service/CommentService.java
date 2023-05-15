@@ -27,7 +27,7 @@ public interface CommentService {
     List<Comment> findAllByPostId(int id);
 
     /**
-     * Сохраняет комментарий в репозитории.
+     * Сохраняет комментарий в репозитории и возвращает его.
      * Устанавливает в качестве полей комментария пользователя и пост.
      * Пользователь получается из репозитория с помощью метода
      * {@link UserRepository#findUserByUsername(String)}
@@ -37,6 +37,7 @@ public interface CommentService {
      *
      * @param id      идентификатор поста
      * @param comment комментарий
+     * @ return сохраненный комментарий
      */
-    void addCommentToPost(int id, Comment comment);
+    Comment addCommentToPost(int id, Comment comment);
 }

@@ -1,4 +1,5 @@
 package ru.job4j.forum.controller;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
 import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.Post;
-import ru.job4j.forum.model.User;
 import ru.job4j.forum.service.ImplCommentService;
 import ru.job4j.forum.service.ImplPostService;
-import ru.job4j.forum.service.ImplUserService;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -96,8 +95,8 @@ public class PostControllerTest {
     @WithMockUser
     public void shouldSavePost() throws Exception {
         this.mockMvc.perform(post("/save")
-                .param("name", "Куплю ладу-грант. Дорого.")
-                .param("description", "Год выпуска не ранее 2018"))
+                        .param("name", "Куплю ладу-грант. Дорого.")
+                        .param("description", "Год выпуска не ранее 2018"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
         ArgumentCaptor<Post> argument = ArgumentCaptor.forClass(Post.class);
@@ -115,8 +114,8 @@ public class PostControllerTest {
     @WithMockUser
     public void shouldSaveCommentary() throws Exception {
         this.mockMvc.perform(post("/addComm")
-                .param("postId", "1")
-                .param("text", "Куплю, но не дорого"))
+                        .param("postId", "1")
+                        .param("text", "Куплю, но не дорого"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("post"));
