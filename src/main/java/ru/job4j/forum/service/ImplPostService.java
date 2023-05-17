@@ -6,7 +6,7 @@ import ru.job4j.forum.model.Post;
 import ru.job4j.forum.repository.PostRepository;
 
 import javax.transaction.Transactional;
-import java.util.*;
+import java.util.List;
 
 /**
  * Реализация сервиса по работе с постами

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import ru.job4j.forum.Main;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.repository.PostRepository;
 
@@ -23,7 +24,7 @@ import static org.mockito.Mockito.verify;
  * @version 1.0
  * @see ru.job4j.forum.service.ImplPostService
  */
-@SpringBootTest(classes = Math.class)
+@SpringBootTest(classes = Main.class)
 class ImplPostServiceTest {
 
     /**

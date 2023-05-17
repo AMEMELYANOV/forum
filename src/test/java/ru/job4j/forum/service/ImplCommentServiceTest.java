@@ -7,6 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import ru.job4j.forum.Main;
 import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
@@ -29,7 +30,7 @@ import static org.mockito.Mockito.*;
  * @version 1.0
  * @see ru.job4j.forum.service.ImplCommentService
  */
-@SpringBootTest(classes = Math.class)
+@SpringBootTest(classes = Main.class)
 class ImplCommentServiceTest {
 
     /**

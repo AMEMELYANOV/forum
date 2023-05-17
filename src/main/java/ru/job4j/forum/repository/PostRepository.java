@@ -5,7 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import ru.job4j.forum.model.Post;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Хранилище постов
@@ -20,7 +19,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
      * Возвращает пост по идентификатору.
      *
      * @param id идентификатор поста
-     * @return  пост
+     * @return пост
      */
     Post findById(int id);
 

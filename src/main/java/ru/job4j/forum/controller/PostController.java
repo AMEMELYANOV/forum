@@ -4,11 +4,16 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.service.*;
+import ru.job4j.forum.service.CommentService;
+import ru.job4j.forum.service.PostService;
+import ru.job4j.forum.service.UserService;
 
 /**
  * Контроллер для работы с постами
@@ -43,7 +48,7 @@ public class PostController {
      * получается через метод сервисного слоя {@link PostService#findById(int)}.
      *
      * @param postId идентификатор поста
-     * @param model модель
+     * @param model  модель
      * @return страница редактирования поста
      */
     @GetMapping("/edit")
@@ -52,9 +57,9 @@ public class PostController {
         model.addAttribute("post", post);
         model.addAttribute("user",
                 SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getPrincipal());
+                        .getContext()
+                        .getAuthentication()
+                        .getPrincipal());
         return "edit";
     }
 
@@ -86,7 +91,7 @@ public class PostController {
      * помощью метода сервисного слоя {@link CommentService#findAllByPostId(int)}.
      *
      * @param postId идентификатор поста
-     * @param model модель
+     * @param model  модель
      * @return страница подробной информации о посте
      */
     @GetMapping("/post")
@@ -130,9 +135,9 @@ public class PostController {
      * В пост сохраняются данные о комментарии, переданные в запросе.
      * Пост для сохранения получается с помощью аргумента идентификатора и метода
      *
-     * @param postId идентификатор поста
+     * @param postId  идентификатор поста
      * @param comment комментарий
-     * @param model модель
+     * @param model   модель
      * @return страница подробной информации о посте
      */
     @PostMapping("/addComm")

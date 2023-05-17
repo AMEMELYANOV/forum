@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.repository.AuthorityRepository;
-import ru.job4j.forum.repository.PostRepository;
 
 import javax.transaction.Transactional;
 

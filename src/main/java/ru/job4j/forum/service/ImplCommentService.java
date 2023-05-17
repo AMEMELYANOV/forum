@@ -10,9 +10,7 @@ import ru.job4j.forum.repository.PostRepository;
 import ru.job4j.forum.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * Реализация сервиса по работе с комментариями
